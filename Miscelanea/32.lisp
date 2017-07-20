@@ -1,0 +1,32 @@
+(defvar i 0)
+(defun pertenece (a lista)
+    (loop   
+        for xi in lista until (eq xi a)
+        do
+        (setf i (+ i 1))
+    )
+    (setf listaf (subseq lista i (length lista)))
+    (if (= i (length lista))
+        (format t "~%'~a' no pertenece a la lista." a)
+        (format t "~%Resultado: ~a" listaf)
+    )
+    (setf i 0)
+)
+
+
+(format t "Cuantos elementos tiene su lista?: ")
+(defvar n (read))
+(format t "~%Ingrese los elementos de la lista:~%")
+(defvar lista nil)
+(defvar e)
+(dotimes (i n)
+    (format t "Elemento de la lista:")
+    (setq e (read))
+    (setq lista (cons e lista))
+)
+(setf lista (reverse lista))
+(format t "Lista: ~a~%" lista)
+
+(format t "Que elemento desea ver si pertenece a la lista: ")
+(defvar x (read))
+(pertenece x lista)

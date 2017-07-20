@@ -1,0 +1,37 @@
+(defvar a nil)
+(defvar b nil)
+(defvar lista nil)
+(defvar i 0)
+
+(defun sustituye (a b lista)
+    (when (not (= i (length lista)))
+        (setf xi (nth i lista))
+        (if (eq xi a)
+            (rplaca (nthcdr i lista) b)
+        )
+        (setf i (+ i 1))
+        (sustituye a b lista)
+    )
+)
+
+
+(format t "Cuantos elementos tiene su lista?: ")
+(defvar n (read))
+(format t "~%Ingrese los elementos de la lista:~%")
+(defvar lista nil)
+(defvar e)
+(dotimes (i n)
+    (format t "Elemento de la lista:")
+    (setq e (read))
+    (setq lista (cons e lista))
+)
+(setf lista (reverse lista))
+
+
+(format t "~%Reemplazar elemento: ")
+(defvar x (read))
+(format t "por: ")
+(defvar y (read))
+(sustituye x y lista)
+(format t "~%s~a" lista)
+
